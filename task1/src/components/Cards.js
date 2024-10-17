@@ -6,7 +6,10 @@ import './Cards.css';
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from 'primereact/dropdown';
 import { Password } from 'primereact/password';
-import { Button } from 'primereact/button';       
+import { Button } from 'primereact/button';      
+import 'primeicons/primeicons.css';
+import { useNavigate } from 'react-router-dom';
+         
 
 function Cards() {
   const [password, setPassword] = useState('');
@@ -15,6 +18,8 @@ function Cards() {
   const [passwordError, setPasswordError] = useState('');
   const [selectedCity, setSelectedCity] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
+
   const cities = [
     { name: 'RIT' },
     { name: 'REC' },
@@ -30,7 +35,6 @@ function Cards() {
 
   const validatePassword = (password) => {
     if (!password) return false; 
-    // Password must be at least 8 characters long and contain a mix of letters, numbers, and special characters
     const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return strongPasswordRegex.test(password);
   };
@@ -39,7 +43,7 @@ function Cards() {
     const newPassword = e.target.value;
     setPassword(newPassword);
     if (validatePassword(newPassword)) {
-      setPasswordError(''); // Clear password error if password is strong
+      setPasswordError(''); 
     } else {
       setPasswordError('Password must be at least 8 characters long and contain a mix of letters, numbers, and special characters');
     }
@@ -68,9 +72,12 @@ function Cards() {
       setEmail('');
       setSelectedCity(null);
       setIsSubmitted(true);
-      setTimeout(() => setIsSubmitted(false), 3000); // Hide submission message after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        navigate('/details'); 
+      }, 2000); 
     }
-  };
+  }; 
 
   return (
     <div className='bg'>

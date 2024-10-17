@@ -1,0 +1,80 @@
+/* Container styling */
+.details {
+    position: relative;
+    display: flex;
+    margin-left: 300px;
+    border-radius: 20px;
+    margin-top: 50px;
+  }
+
+#head{
+    margin-left: 300px;
+    
+}
+.det{
+  background-color: rgb(221, 230, 237);
+  height:100vh;
+}
+.p-inputgroup{
+  margin-left: 300px;
+  width:750px;
+}
+#input{
+  border-radius: 10px;
+
+}
+#b{
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+
+
+/* Sidebar.css */
+.sidebar {
+  width: 150px;
+  height: 100vh;
+  background: linear-gradient(to bottom, #6f97be, #83b7bf);
+  color: white;
+  padding: 20px;
+  position: fixed;
+  border-top-right-radius: 90px;
+  border-bottom-right-radius: 10px;
+}
+i{
+  font-size: 20px;
+  font-weight: 1000;
+}
+.sidebar-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 200px;
+  text-align: center;
+}
+
+.sidebar-menu li {
+  margin-bottom: 10px;
+}
+
+.sidebar-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+  background-color: linear-gradient(190deg, #2c3e50, #b2bfcc);
+}
+#ellipsis{
+  font-size: 20px;
+  padding:10px;
+}
