@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "../Sidebar";
 import { Card } from 'primereact/card';
 import './edit.css';
 import { Button } from 'primereact/button';
@@ -55,13 +55,14 @@ const Create = ({ program }) => {
             console.error('Error:', error);
         }
     };
+    const Create = program ? 'Edit' : 'Create';
 
     return (
         <div>
             <Sidebar />
             <Card className="createcard">
                 <h4>breadcrumb</h4>
-                <p className="create">Create Program</p>
+                <p className="create">{Create} Program</p>
                 <p1>Please enter the program details in the fields below</p1>
                 <div className="content">
                     <div className="left">

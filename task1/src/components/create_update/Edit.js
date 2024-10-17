@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 import Create from './Createui';
 
 const EditPage = () => {
-    const { id } = useParams();
+    const { program_name } = useParams();
     const [program, setProgram] = useState(null);
 
     useEffect(() => {
         const fetchProgram = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/programs/${id}`);
+                const response = await fetch(`http://localhost:5000/api/programs/name/${program_name}`);
                 const data = await response.json();
                 setProgram(data);
             } catch (error) {
@@ -18,7 +18,7 @@ const EditPage = () => {
         };
 
         fetchProgram();
-    }, [id]);
+    }, [program_name]);
 
     return (
         <div>

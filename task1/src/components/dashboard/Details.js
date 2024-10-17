@@ -7,7 +7,7 @@ import 'primereact/resources/primereact.min.css';
 import './Details.css';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
-import Sidebar from './Sidebar';
+import Sidebar from '../Sidebar';
 import { Menu } from 'primereact/menu'; 
 import 'primeicons/primeicons.css';
 import { useNavigate } from 'react-router-dom';
@@ -73,8 +73,9 @@ const Details = () => {
     };
     const navigate = useNavigate();    
 
+  
     const editProgram = (rowData) => {
-        navigate(`/edit/${rowData._id}`);
+        navigate(`/edit/${rowData.program_name}`);
     };
 
     const actionBodyTemplate = (rowData) => {
