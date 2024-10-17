@@ -75,7 +75,7 @@ function Cards() {
       setTimeout(() => {
         setIsSubmitted(false);
         navigate('/details'); 
-      }, 2000); 
+      }, 1000); 
     }
   }; 
 

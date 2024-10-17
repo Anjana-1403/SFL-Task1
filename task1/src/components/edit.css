@@ -1,0 +1,50 @@
+.create {
+}
+
+.createcard {
+    margin: 20px 20px 0 170px;
+}
+
+.createcard p {
+    margin:30px;
+    color: black;
+    font-size: 30px;
+    line-height:0.2;
+}
+
+.p1 {
+    margin:30px;
+    color: rgb(185, 191, 189);
+    font-size: 18px;
+}
+.content{
+    display:flex;
+}
+#create{
+    border-radius: 10px;
+    margin-left:30px;
+}
+.left{
+    margin: 50px 50px 0 50px;
+}
+#inputbox{
+    margin-top:10px;
+    margin-bottom:30px;
+    width:400px;
+}
+.input-label{
+}
+#sup{
+    color:red;
+    font-size:15px;
+}
+.right{
+    margin: 50px 50px 0 50px;
+}
+#fileUpload{
+    margin-top:15px;
+    width:400px;
+}
+#submit_create{
+    margin-left:460px;
+}

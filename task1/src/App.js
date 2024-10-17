@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Cards from './components/Cards';
+import EditPage from './components/Edit';
 import Details from './components/Details';
-import AddItem from './components/AddItem';
+import CreatePage from './components/Create';
 
 const App = () => {
   return (
@@ -10,9 +11,9 @@ const App = () => {
       
       <Routes>
         <Route path="/" element={<Cards />} />
-        <Route path="/details" element={<Details />} />
-        <Route path="/add-item" element={<AddItem />} />
-       
+        <Route path="/details" element={<Details />} />   
+        <Route path="/edit/:id" element={<EditPage />} />
+        <Route path="/create" element={<CreatePage />} />   
       </Routes>
     </Router>
   );

@@ -1,34 +1,32 @@
 /* Container styling */
 .details {
-    position: relative;
+  height:500px;
     display: flex;
     margin-left: 300px;
-    border-radius: 20px;
     margin-top: 50px;
   }
-
+.card_details{
+  height:500px;
+  border-radius: 30px;
+}
 #head{
     margin-left: 300px;
     
 }
 .det{
   background-color: rgb(221, 230, 237);
-  height:100vh;
+}
+.flex{
+  display:flex;
+
 }
 .p-inputgroup{
   margin-left: 300px;
-  width:750px;
+  width:600px;
 }
 #input{
   border-radius: 10px;
-
 }
-#b{
-  margin-left: 10px;
-  border-radius: 10px;
-}
-
-
 
 /* Sidebar.css */
 .sidebar {

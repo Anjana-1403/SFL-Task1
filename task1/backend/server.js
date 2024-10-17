@@ -8,7 +8,6 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection string
-console.log('Fetching programs 1...');
 const mongoURI = 'mongodb://127.0.0.1:27017/programs';
 
 // Connect to MongoDB
@@ -24,16 +23,24 @@ const programSchema = new mongoose.Schema({
   program_end_date: Date,
   status: Number // 0 for LIVE, 1 for DRAFT
 });
-console.log('Fetching programs 2...');
 const Program = mongoose.model('Program', programSchema);
 
 // Get all programs
 app.get('/api/programs', async (req, res) => {
   try {
-    console.log('Fetching programs...');
     const programs = await Program.find();
     res.json(programs);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
+// Get a program by ID
+app.get('/api/programs/:id', async (req, res) => {
+  try {
+    const program = await Program.findById(req.params.id);
+    if (!program) return res.status(404).json({ message: 'Program not found' });
+    res.json(program);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -45,6 +52,28 @@ app.delete('/api/programs/:id', async (req, res) => {
     const program = await Program.findByIdAndDelete(req.params.id);
     if (!program) return res.status(404).json({ message: 'Program not found' });
     res.json({ message: 'Program deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Update a program by ID
+app.put('/api/programs/:id', async (req, res) => {
+  try {
+    const updatedProgram = await Program.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedProgram) return res.status(404).json({ message: 'Program not found' });
+    res.json(updatedProgram);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get a program by name
+app.get('/api/programs/name/:program_name', async (req, res) => {
+  try {
+    const program = await Program.findOne({ program_name: req.params.program_name });
+    if (!program) return res.status(404).json({ message: 'Program not found' });
+    res.json(program);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

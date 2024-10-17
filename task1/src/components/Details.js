@@ -10,6 +10,9 @@ import { Button } from 'primereact/button';
 import Sidebar from './Sidebar';
 import { Menu } from 'primereact/menu'; 
 import 'primeicons/primeicons.css';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Details = () => {
     const [products, setProducts] = useState([]);
@@ -68,8 +71,12 @@ const Details = () => {
             })
             .catch(error => console.error('Error deleting program:', error));
     };
+    const navigate = useNavigate();    
 
-    
+    const editProgram = (rowData) => {
+        navigate(`/edit/${rowData._id}`);
+    };
+
     const actionBodyTemplate = (rowData) => {
         if (!menuRefs.current[rowData._id]) {
             menuRefs.current[rowData._id] = React.createRef();
@@ -85,6 +92,11 @@ const Details = () => {
                 label: 'Delete',
                 icon: 'pi pi-trash',
                 command: () => deleteProgram(rowData)
+            },
+            {
+                label: 'Edit',
+                icon: 'pi pi-pencil',
+                command: () => editProgram(rowData)
             }
         ];
 
@@ -99,31 +111,36 @@ const Details = () => {
             </div>
         );
     };
-
+    const create = () => {
+        navigate('/create');
+    };
 
     return (
         <div>
             <Sidebar />
             <Card className="det">
                 <h1 id="head">Manage learners</h1>
-                <div className="p-inputgroup">
+                <div className='flex'>
                     <InputText 
+                        className="p-inputgroup"
                         id="input"
                         placeholder="Search" 
                         onInput={(e) => setGlobalFilter(e.target.value)} 
                     />
-                    <Button id="b" label=" Search" text raised />
+                    <Button label="Create Program" id="create" onClick={create}/>
+
                 </div>
                 <div className="details">
-                    <DataTable value={products} paginator rows={5} globalFilter={globalFilter} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
-                        <Column field="program_name" header="Program" style={{ width: '30%' }}></Column>
-                        <Column field="program_start_date" header="Start Date" style={{ width: '30%' }}></Column>
-                        <Column field="program_end_date" header="End Date" style={{ width: '30%' }}></Column>
-                        <Column field="status" header="Status" style={{ width: '30%' }} body={statusBodyTemplate} ></Column>
-                        <Column 
-                            body={actionBodyTemplate}                        
-                        ></Column>
-                    </DataTable>
+                    <Card className='card_details'>
+                        <DataTable className='detail' value={products} paginator rows={4} globalFilter={globalFilter} >
+                            <Column field="program_name" header="Program" style={{ width: '40%' }}></Column>
+                            <Column field="program_start_date" header="Start Date" style={{ width: '40%' }}></Column>
+                            <Column field="program_end_date" header="End Date" style={{ width: '40%' }}></Column>
+                            <Column field="status" header="Status" style={{ width: '40%' }} body={statusBodyTemplate} ></Column>
+                            <Column 
+                                body={actionBodyTemplate}></Column>
+                        </DataTable>
+                    </Card>
                 </div>
             </Card>
         </div>
